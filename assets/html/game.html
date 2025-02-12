@@ -4,71 +4,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <meta name="description" content="Javascript Custom Quiz">
-  <meta name="keywords" content="Javascript, Quiz, Javascript Quiz">
-  <meta name="author" content="Kirill Kuznetsov">
-  <!-- Title -->
   <title>Javascript Quiz - Play</title>
-  <!-- Custom Styles -->
-  <link rel="stylesheet" href="../css/app.css" />
   <link rel="stylesheet" href="../css/game.css" />
-  <!-- Favicon -->
-  <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
 </head>
 
 <body>
+  <div id="hud">
+    <div class="hud-item">
+      <p class="score-prefix">Score</p>
+      <h1 id="score">100</h1>
+    </div>
+  </div>
+
   <main class="container">
-    <div id="game" class="justify-center flex-column">
-      <div id="hud">
-        <div class="hud-item">
-
-          <!-- Question title -->
-          <p id="progressText" class="hud-prefix">
-            Question
-          </p>
-
-          <!-- Progress bar -->
-          <div id="progressBar">
-            <div id="progressBarFull"></div>
-          </div>
-        </div>
-        <div class="hud-item">
-
-          <!-- Score -->
-          <p class="hud-prefix score-prefix">
-            Score
-          </p>
-          <h1 class="hud-main-text" id="score">
-            100
-          </h1>
-        </div>
-      </div>
-
-      <!-- Dummy example -->
-      <div id="boxed">
-        <h2 id="question">What is the answer to this questions?</h2>
-        <div class="choice-container">
-          <p class="choice-prefix">A</p>
-          <p class="choice-text" data-number="1">Choice 1</p>
-        </div>
-        <div class="choice-container">
-          <p class="choice-prefix">B</p>
-          <p class="choice-text" data-number="2">Choice 2</p>
-        </div>
-        <div class="choice-container">
-          <p class="choice-prefix">C</p>
-          <p class="choice-text" data-number="3">Choice 3</p>
-        </div>
-        <div class="choice-container">
-          <p class="choice-prefix">D</p>
-          <p class="choice-text" data-number="4">Choice 4</p>
-        </div>
+    <div id="game">
+      <div id="questions-container">
+        <!-- Questions will be dynamically inserted here -->
       </div>
     </div>
   </main>
+
+  <template id="question-template">
+    <div class="question-slide">
+      <div id="boxed">
+        <h2 class="question-text">What is the answer to this questions?</h2>
+        <div class="choices-container">
+          <!-- Choices will be dynamically inserted -->
+        </div>
+      </div>
+    </div>
+  </template>
+
   <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
-  <script src="../js/game.js"></script> 
+  <script src="../js/game.js"></script>
 </body>
 
 </html>
