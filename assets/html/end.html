@@ -9,7 +9,7 @@
   <meta name="keywords" content="Javascript, Quiz, Javascript Quiz">
   <meta name="author" content="Kirill Kuznetsov">
   <!-- Title -->
-  <title>Congrats!</title>
+  <title>Quiz Results</title>
   <!-- Custom Styles -->
   <link rel="stylesheet" href="../css/app.css" />
   <!-- Favicon -->
@@ -21,21 +21,29 @@
   <!-- Final Result -->
   <main class="container">
     <div id="end" class="flex-center flex-column">
-      <h1 id="finalScore"></h1>
+      <h1>Quiz Complete!</h1>
+      
+      <div class="results-container">
+        <div class="result-item">
+          <span class="result-label">Correct Answers:</span>
+          <span id="correctCount" class="result-value">0</span>
+        </div>
+        
+        <div class="result-item">
+          <span class="result-label">Incorrect Answers:</span>
+          <span id="incorrectCount" class="result-value">0</span>
+        </div>
+        
+        <div class="result-item">
+          <span class="result-label">Final Score:</span>
+          <span id="finalScore" class="result-value">0</span>
+        </div>
+      </div>
 
-      <!-- Temporary Test Section -->
-      <h3 id="correctScore"></h3>
-      <h3 id="incorrectScore"></h3>
-      <!-- Temporary Test Section -->
-
-      <form>
-        <input type="text" name="username" id="username" placeholder="username" />
-        <button type="submit" class="btn" id="saveScoreBtn" onclick="saveHighScore(event)" disabled>
-          Save
-        </button>
-      </form>
-      <a class="btn" href="game.html">Play Again</a>
-      <a class="btn" href="main.html">Go Home</a>
+      <div class="end-buttons">
+        <a class="btn" href="game.html">Try Again</a>
+        <a class="btn" href="../../index.html">Home</a>
+      </div>
     </div>
   </main>
   <script src="../js/end.js"></script>

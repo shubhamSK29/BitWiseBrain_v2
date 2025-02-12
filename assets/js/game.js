@@ -115,7 +115,7 @@ let questions = [
 // CONSTANTS
 const CORRECT_TAX = 10;
 const INCORRECT_TAX = 5;
-const MAX_QUESTIONS = 13; // Change this to the number of questions you want to display
+const MAX_QUESTIONS = 5; // Change this to the number of questions you want to display
 const BATCH_SIZE = 5;
 const TOTAL_QUESTIONS = questions.length;
 
@@ -123,15 +123,31 @@ let loadedQuestions = [];
 let currentViewingIndex = 0;
 let isLoading = false;
 
+function addControlsInfo() {
+    const controlsBox = document.createElement('div');
+    controlsBox.id = 'controls-info';
+    controlsBox.innerHTML = `
+        <div class="controls-content">
+            <p>Controls:</p>
+            <ul>
+                <li>↹ Tab: Navigate options</li>
+                <li>↵ Enter: Select option</li>
+                <li>␣ Space: Next question</li>
+                <li>⌫ Backspace: Previous question</li>
+            </ul>
+        </div>
+    `;
+    document.body.appendChild(controlsBox);
+}
+
 function startGame() {
     score = 0;
     scoreText.innerText = "0";
-    // Only take MAX_QUESTIONS number of questions randomly
     availableQuesions = _.shuffle([...questions]).slice(0, MAX_QUESTIONS);
     loadInitialQuestions();
     setupScrollListener();
     setupKeyListener();
-    addStylesheet();
+    addControlsInfo();
     
     setTimeout(() => {
         const firstSlide = document.querySelector('.question-slide');
@@ -226,15 +242,16 @@ function createChoiceElement(text, number, isCorrect) {
     choice.dataset.correct = isCorrect;
     choice.addEventListener('click', handleChoiceClick);
     
-    // Add focus styles
+    // Remove the old focus styles since we're handling them in CSS now
     choice.addEventListener('focus', () => {
-        choice.style.transform = 'scale(1.02)';
-        choice.style.boxShadow = '0 0 20px rgba(78, 84, 200, 0.5)';
+        // Only add focus styles if the question hasn't been answered yet
+        if (!choice.closest('.question-slide').querySelector('.correct, .incorrect')) {
+            choice.classList.add('focused');
+        }
     });
     
     choice.addEventListener('blur', () => {
-        choice.style.transform = '';
-        choice.style.boxShadow = '';
+        choice.classList.remove('focused');
     });
     
     return choice;
@@ -338,74 +355,77 @@ function setupKeyListener() {
         
         if (!currentSlide) return;
 
-        // Don't allow navigation if question already answered
-        if (currentSlide.querySelector('.correct') || 
-            currentSlide.querySelector('.incorrect')) {
-            if (e.key === 'Enter') {
-                const nextSlide = currentSlide.nextElementSibling;
-                if (nextSlide) {
-                    nextSlide.scrollIntoView({ behavior: 'smooth' });
-                    const firstChoice = nextSlide.querySelector('.choice-container');
-                    if (firstChoice) {
-                        setTimeout(() => firstChoice.focus(), 100);
-                    }
-                }
-            }
-            return;
-        }
-
-        const choices = currentSlide.querySelectorAll('.choice-container');
-        let focusedChoice = currentSlide.querySelector('.choice-container:focus');
-        
         switch (e.key) {
             case 'Tab':
                 e.preventDefault();
-                if (!focusedChoice) {
-                    choices[0].focus();
-                } else {
-                    const currentIndex = Array.from(choices).indexOf(focusedChoice);
-                    let nextIndex;
-                    
-                    if (e.shiftKey) {
-                        // Move backwards with Shift+Tab
-                        nextIndex = currentIndex <= 0 ? choices.length - 1 : currentIndex - 1;
-                    } else {
-                        // Move forwards with Tab
-                        nextIndex = (currentIndex + 1) % choices.length;
-                    }
-                    choices[nextIndex].focus();
-                }
+                handleTabNavigation(currentSlide, e.shiftKey);
                 break;
 
             case 'Enter':
-                if (focusedChoice) {
-                    focusedChoice.click();
-                } else {
-                    const nextSlide = currentSlide.nextElementSibling;
-                    if (nextSlide) {
-                        nextSlide.scrollIntoView({ behavior: 'smooth' });
+                handleEnterKey(currentSlide);
+                break;
+
+            case 'Backspace':
+                e.preventDefault();
+                const previousSlide = currentSlide.previousElementSibling;
+                if (previousSlide) {
+                    previousSlide.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                        const firstChoice = previousSlide.querySelector('.choice-container');
+                        if (firstChoice) firstChoice.focus();
+                    }, 500);
+                }
+                break;
+
+            case ' ': // Space key
+                e.preventDefault();
+                const nextSlide = currentSlide.nextElementSibling;
+                if (nextSlide) {
+                    nextSlide.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
                         const firstChoice = nextSlide.querySelector('.choice-container');
-                        if (firstChoice) {
-                            setTimeout(() => firstChoice.focus(), 100);
-                        }
-                    }
+                        if (firstChoice) firstChoice.focus();
+                    }, 500);
                 }
                 break;
         }
     });
 }
 
-// Update CSS for focus state
-function addStylesheet() {
-    const style = document.createElement('style');
-    style.textContent = `
-        .choice-container:focus {
-            outline: none;
-            transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(78, 84, 200, 0.5);
+// Helper functions to keep the code clean
+function handleTabNavigation(currentSlide, isShiftKey) {
+    const choices = currentSlide.querySelectorAll('.choice-container');
+    let focusedChoice = currentSlide.querySelector('.choice-container:focus');
+    
+    if (!focusedChoice) {
+        choices[0].focus();
+    } else {
+        const currentIndex = Array.from(choices).indexOf(focusedChoice);
+        let nextIndex;
+        
+        if (isShiftKey) {
+            nextIndex = currentIndex <= 0 ? choices.length - 1 : currentIndex - 1;
+        } else {
+            nextIndex = (currentIndex + 1) % choices.length;
         }
-    `;
-    document.head.appendChild(style);
+        choices[nextIndex].focus();
+    }
+}
+
+function handleEnterKey(currentSlide) {
+    const focusedChoice = currentSlide.querySelector('.choice-container:focus');
+    if (focusedChoice) {
+        focusedChoice.click();
+    } else {
+        const nextSlide = currentSlide.nextElementSibling;
+        if (nextSlide) {
+            nextSlide.scrollIntoView({ behavior: 'smooth' });
+            setTimeout(() => {
+                const firstChoice = nextSlide.querySelector('.choice-container');
+                if (firstChoice) firstChoice.focus();
+            }, 500);
+        }
+    }
 }
 
 // Start the game when the page loads

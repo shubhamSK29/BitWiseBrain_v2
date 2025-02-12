@@ -8,9 +8,28 @@
 }
 
 body {
-    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url("../img/quiz-BG.jpg");
+    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url("../img/quiz-BG.jpg");
     background-position: center;
     background-size: cover;
+}
+
+/* Add ambient glow effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, 
+            rgba(143, 148, 251, 0.15) 0%, 
+            transparent 60%),
+        radial-gradient(circle at 80% 80%, 
+            rgba(78, 84, 200, 0.15) 0%, 
+            transparent 60%);
+    pointer-events: none;
+    z-index: 0;
 }
 
 /* Container styles */
@@ -90,24 +109,49 @@ body {
     overflow: hidden;
 }
 
-.choice-container:hover {
+/* Enhanced hover state */
+.choice-container:hover,
+.choice-container:focus {
     transform: scale(1.01);
     box-shadow: 0 0 20px rgba(143, 148, 251, 0.3);
     background: linear-gradient(45deg, 
-        rgba(88, 94, 210, 0.85), 
-        rgba(153, 158, 255, 0.85)
+        rgba(98, 104, 230, 0.85), 
+        rgba(163, 168, 255, 0.85)
     );
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.choice-container:hover::after {
+/* Add highlight effect on hover/focus */
+.choice-container:hover::after,
+.choice-container:focus::after {
     content: '';
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.05);
+    background: linear-gradient(45deg,
+        rgba(255, 255, 255, 0.1),
+        rgba(255, 255, 255, 0.05)
+    );
     pointer-events: none;
+}
+
+/* Remove outline and add custom focus style */
+.choice-container:focus {
+    outline: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Make prefix more visible on hover/focus */
+.choice-container:hover .choice-prefix,
+.choice-container:focus .choice-prefix {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+/* Remove the old hover styles that might conflict */
+.choice-container:hover::after {
+    content: none;
 }
 
 .choice-prefix {
@@ -179,7 +223,7 @@ body {
     padding: 8px 5px;
 }
 
-/* Add new ambient glow effect */
+/* Update container glow */
 .container::before {
     content: '';
     position: fixed;
@@ -188,8 +232,8 @@ body {
     width: 100%;
     height: 100%;
     background: radial-gradient(circle at 50% 50%, 
-        rgba(143, 148, 251, 0.1) 0%, 
-        rgba(78, 84, 200, 0.05) 50%, 
+        rgba(143, 148, 251, 0.15) 0%, 
+        rgba(78, 84, 200, 0.1) 50%, 
         transparent 100%);
     pointer-events: none;
     z-index: -1;
@@ -198,4 +242,59 @@ body {
 /* Make scrollbar invisible but keep functionality */
 #boxed::-webkit-scrollbar {
     width: 0px;
+}
+
+/* Controls info box styles */
+#controls-info {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+    color: white;
+    font-size: 0.9rem;
+}
+
+#controls-info .controls-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#controls-info p {
+    margin: 0;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+#controls-info ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+#controls-info li {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Prevent hover/focus effects on answered questions */
+.question-slide:has(.correct, .incorrect) .choice-container:hover,
+.question-slide:has(.correct, .incorrect) .choice-container:focus {
+    transform: none;
+    box-shadow: 0 0 15px rgba(78, 84, 200, 0.2);
+    background: linear-gradient(45deg, rgba(78, 84, 200, 0.8), rgba(143, 148, 251, 0.8));
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.question-slide:has(.correct, .incorrect) .choice-container:hover::after,
+.question-slide:has(.correct, .incorrect) .choice-container:focus::after {
+    display: none;
 }
