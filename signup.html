@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BitWiseBrain - Learn Through Reels</title>
+    <title>Join BitWiseBrain - Learn Through Reels</title>
     <link rel="stylesheet" href="styles-login-signup.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="icon">
                 <h2 class="logo">BitWiseBrain</h2>
             </div>
-            
+
             <div class="menu">
                 <ul>
                     <li><a href="#">Home</a></li>
@@ -24,24 +24,23 @@
         </div> 
 
         <div class="content">
-            <h1>Learn Programming<br>Through <span>Reels</span><br>Quick & Easy</h1>
-            <p class="par">Master programming concepts through bite-sized video reels.<br>
-                Interactive quizzes and challenges make learning fun and effective.<br>
-                Join thousands of learners in this modern learning experience.</p>
+            <h1>Start Your<br>Learning <span>Journey</span><br>Today</h1>
+            <p class="par">Join our community of learners and master programming<br>
+                through engaging video reels and interactive quizzes.<br>
+                Learn at your own pace, anywhere, anytime.</p>
 
-            <button class="cn"><a href="signup.html">Get Started</a></button>
-
-            <div class="login-form form">
-                <h2>Welcome Back!</h2>
+            <div class="signup-form form">
+                <h2>Create Account</h2>
                 <input type="email" name="email" placeholder="Email Address" required>
-                <input type="password" name="password" placeholder="Password" required>
-                <!-- <a href="./assets/html/main.html"><button class="btnn">Log In</button></a> -->
-                <button class="btnn" data-href="./assets/html/main.html">Log In</button>
+                <input type="password" name="password" placeholder="Create Password" required>
+                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                <!-- <a href="main.html"><button class="btnn">Sign Up</button></a> -->
+                <button class="btnn" data-href="main.html">Sign Up</button>
 
-                <p class="link">New to BitWiseBrain?<br>
-                <a href="signup.html">Sign up</a></p>
+                <p class="link">Already have an account?<br>
+                <a href="../../index.html">Log in here</a></p>
                 
-                <p class="liw">Or continue with</p>
+                <p class="liw">Or sign up with</p>
                 <div class="icons">
                     <a href="#"><ion-icon name="logo-google"></ion-icon></a>
                     <a href="#"><ion-icon name="logo-github"></ion-icon></a>
@@ -49,10 +48,10 @@
                 </div>
             </div>
 
-            <!-- Add this somewhere in the body, after the form -->
+            <!-- In signup.html, use this path instead -->
             <div class="dev-access">
                 <button 
-                    onclick="window.location.href='./assets/html/main.html'" 
+                    onclick="window.location.href='main.html'" 
                     style="
                         position: fixed;
                         bottom: 10px;
@@ -70,6 +69,5 @@
     </div>
     <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="assets/js/login-signup.js"></script>
-    
 </body>
 </html>

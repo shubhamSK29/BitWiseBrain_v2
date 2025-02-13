@@ -1,126 +1,19 @@
+import questions from './questions.js';
+
 const scoreText = document.getElementById("score");
 const questionsContainer = document.getElementById("questions-container");
-let currentQuestion = {};
 let score = 0;
-let questionCounter = 0;
+let currentCorrectCount = 0;
+let currentIncorrectCount = 0;
 let availableQuesions = [];
-
-let questions = [
-    {
-        question: "Which HTML tag is used for JavaScript code?",
-        choice1: "［script］",
-        choice2: "［javascript］",
-        choice3: "［js］",
-        choice4: "［scripting］",
-        answer: 1
-    },
-    {
-        question: "What is the correct syntax for referring to an external script called 'example.js'?",
-        choice1: "［script href='example.js'］",
-        choice2: "［script name='example.js'］",
-        choice3: "［script src='example.js'］",
-        choice4: "［script file='example.js'］",
-        answer: 3
-    },
-    {
-        question: "How do you write 'Hello World' in an alert box?",
-        choice1: "msgBox('Hello World');",
-        choice2: "alertBox('Hello World');",
-        choice3: "msg('Hello World');",
-        choice4: "alert('Hello World');",
-        answer: 4
-    },
-    {
-        question: "How do you create a function in JavaScript?",
-        choice1: "function = myFunction()",
-        choice2: "function:myFunction()",
-        choice3: "function myFunction()",
-        choice4: "create.myFunction()",
-        answer: 3
-    },
-    {
-        question: "How do you call a function named 'myFunction'?",
-        choice1: "call myFunction()",
-        choice2: "call function myFunction()",
-        choice3: "myFunction()",
-        choice4: "Call.myFunction()",
-        answer: 3
-    },
-    {
-        question: "How do you write a comment in JavaScript?",
-        choice1: "-- This is a comment",
-        choice2: "// This is a comment",
-        choice3: "# This is a comment",
-        choice4: "/* This is a comment */",
-        answer: 2
-    },
-    {
-        question: "What is the correct way to write a JavaScript array?",
-        choice1: "var colors = 'red', 'green', 'blue'",
-        choice2: "var colors = (1:'red', 2:'green', 3:'blue')",
-        choice3: "var colors = ['red', 'green', 'blue']",
-        choice4: "var colors = 1 = ('red'), 2 = ('green'), 3 = ('blue')",
-        answer: 3
-    },
-    {
-        question: "How do you round the number 7.25 to the nearest integer?",
-        choice1: "Math.rnd(7.25)",
-        choice2: "Math.round(7.25)",
-        choice3: "rnd(7.25)",
-        choice4: "round(7.25)",
-        answer: 2
-    },
-    {
-        question: "Which event occurs when the user clicks on an HTML element?",
-        choice1: "onmouseclick",
-        choice2: "onchange",
-        choice3: "onclick",
-        choice4: "onmouseover",
-        answer: 3
-    },
-    {
-        question: "How do you declare a JavaScript variable?",
-        choice1: "var carName;",
-        choice2: "variable carName;",
-        choice3: "v carName;",
-        choice4: "declare carName;",
-        answer: 1
-    },
-    {
-        question: "Which operator is used to assign a value to a variable?",
-        choice1: "*",
-        choice2: "x",
-        choice3: "=",
-        choice4: "-",
-        answer: 3
-    },
-    {
-        question: "What will the following code return: Boolean(10 > 9)?",
-        choice1: "false",
-        choice2: "NaN",
-        choice3: "true",
-        choice4: "undefined",
-        answer: 3
-    },
-    {
-        question: "How to get full attendance in lectures?",
-        choice1: "Attend the lecture",
-        choice2: "Let your friend proxy in your attendance",
-        choice3: "Submit a doctor's certificate",
-        choice4: "All of the above",
-        answer: 4
-    }
-];
 
 // CONSTANTS
 const CORRECT_TAX = 10;
 const INCORRECT_TAX = 5;
 const MAX_QUESTIONS = 5; // Change this to the number of questions you want to display
 const BATCH_SIZE = 5;
-const TOTAL_QUESTIONS = questions.length;
 
 let loadedQuestions = [];
-let currentViewingIndex = 0;
 let isLoading = false;
 
 function addControlsInfo() {
@@ -142,7 +35,13 @@ function addControlsInfo() {
 
 function startGame() {
     score = 0;
+    currentCorrectCount = 0;
+    currentIncorrectCount = 0;
     scoreText.innerText = "0";
+    localStorage.setItem('correctAnswers', '0');
+    localStorage.setItem('incorrectAnswers', '0');
+    localStorage.setItem('mostRecentScore', '0');
+    
     availableQuesions = _.shuffle([...questions]).slice(0, MAX_QUESTIONS);
     loadInitialQuestions();
     setupScrollListener();
@@ -270,11 +169,22 @@ function handleChoiceClick(e) {
     
     if (isCorrect) {
         incrementScore(CORRECT_TAX);
+        currentCorrectCount++;
+        localStorage.setItem('correctAnswers', currentCorrectCount.toString());
     } else {
         decrementScore(INCORRECT_TAX);
+        currentIncorrectCount++;
+        localStorage.setItem('incorrectAnswers', currentIncorrectCount.toString());
     }
 
     selectedChoice.classList.add(classToApply);
+
+    // Log current counts for debugging
+    console.log('Current counts:', {
+        correct: currentCorrectCount,
+        incorrect: currentIncorrectCount,
+        score: score
+    });
 
     currentSlide.querySelectorAll('.choice-container').forEach(choice => {
         choice.style.pointerEvents = 'none';
@@ -283,7 +193,18 @@ function handleChoiceClick(e) {
     // Check if this was the last question
     const answeredQuestions = document.querySelectorAll('.correct, .incorrect').length;
     if (answeredQuestions >= MAX_QUESTIONS) {
-        localStorage.setItem('mostRecentScore', score);
+        // Final save of all values before redirect
+        localStorage.setItem('mostRecentScore', score.toString());
+        localStorage.setItem('correctAnswers', currentCorrectCount.toString());
+        localStorage.setItem('incorrectAnswers', currentIncorrectCount.toString());
+        
+        // Log final values before redirect
+        console.log('Final values saved:', {
+            correct: currentCorrectCount,
+            incorrect: currentIncorrectCount,
+            score: score
+        });
+
         setTimeout(() => {
             window.location.assign('../html/end.html');
         }, 1000);

@@ -1,58 +1,32 @@
 const username = document.getElementById("username");
 const saveScoreBtn = document.getElementById("saveScoreBtn");
-const finalScore = document.getElementById("finalScore");
-const mostRecentScore = localStorage.getItem("mostRecentScore");
-
 const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
-
-// const correctScore = document.getElementById("correctScore");
-// const incorrectScore = document.getElementById("incorrectScore");
-
 const MAX_HIGH_SCORES = 5;
 
-finalScore.innerText = mostRecentScore;
-// correctScore.innerText = correctScore;
-// incorrectScore.innerText = incorrectScore;
-
-username.addEventListener("keyup", () => {
-  saveScoreBtn.disabled = !username.value;
-});
-
-// Save High Score to Local Storage
-saveHighScore = e => {
-  e.preventDefault();
-
-  const score = {
-    score: finalScore.innerText,
-    name: username.value
-  };
-  highScores.push(score);
-  highScores.sort((a, b) => b.score - a.score);
-  highScores.splice(5);
-
-  localStorage.setItem("highScores", JSON.stringify(highScores));
-  window.location.assign("../html/highscores.html");
-};
-
 document.addEventListener('DOMContentLoaded', () => {
-    // Get elements
-    const correctCount = document.getElementById('correctCount');
-    const incorrectCount = document.getElementById('incorrectCount');
-    const finalScore = document.getElementById('finalScore');
+    // Get elements with more distinct variable names
+    const correctCountDisplay = document.getElementById('correctCount');
+    const incorrectCountDisplay = document.getElementById('incorrectCount');
+    const finalScoreDisplay = document.getElementById('finalScore');
 
     // Get stored values from localStorage
-    const results = {
-        correct: parseInt(localStorage.getItem('correctAnswers')) || 0,
-        incorrect: parseInt(localStorage.getItem('incorrectAnswers')) || 0,
-        score: parseInt(localStorage.getItem('mostRecentScore')) || 0
-    };
+    const storedCorrectCount = parseInt(localStorage.getItem('correctAnswers')) || 0;
+    const storedIncorrectCount = parseInt(localStorage.getItem('incorrectAnswers')) || 0;
+    const storedFinalScore = parseInt(localStorage.getItem('mostRecentScore')) || 0;
+
+    // Debug logging to check values
+    console.log('Stored values:', {
+        correct: storedCorrectCount,
+        incorrect: storedIncorrectCount,
+        score: storedFinalScore
+    });
 
     // Update the display
-    correctCount.textContent = results.correct;
-    incorrectCount.textContent = results.incorrect;
-    finalScore.textContent = results.score;
+    correctCountDisplay.textContent = storedCorrectCount;
+    incorrectCountDisplay.textContent = storedIncorrectCount;
+    finalScoreDisplay.textContent = storedFinalScore;
 
-    // Add some animations
+    // Add animations
     const resultItems = document.querySelectorAll('.result-item');
     resultItems.forEach((item, index) => {
         item.style.opacity = '0';
@@ -63,9 +37,26 @@ document.addEventListener('DOMContentLoaded', () => {
             item.style.transform = 'translateY(0)';
         }, index * 200);
     });
+});
 
-    // Clear localStorage items we don't need anymore
-    localStorage.removeItem('correctAnswers');
-    localStorage.removeItem('incorrectAnswers');
-    localStorage.removeItem('mostRecentScore');
+// Save High Score function
+saveHighScore = e => {
+    e.preventDefault();
+
+    const score = {
+        score: document.getElementById('finalScore').textContent,
+        name: username.value
+    };
+    
+    highScores.push(score);
+    highScores.sort((a, b) => b.score - a.score);
+    highScores.splice(5);
+
+    localStorage.setItem("highScores", JSON.stringify(highScores));
+    window.location.assign("../html/highscores.html");
+};
+
+// Username input event listener
+username.addEventListener("keyup", () => {
+    saveScoreBtn.disabled = !username.value;
 });
