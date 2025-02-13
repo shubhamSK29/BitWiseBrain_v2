@@ -1,0 +1,8 @@
+{
+  "name": "bitwisebrain",
+  "version": "1.0.0",
+  "type": "commonjs",
+  "dependencies": {
+    "mysql2": "^3.6.0"
+  }
+} 

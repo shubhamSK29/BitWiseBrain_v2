@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Join BitWiseBrain - Learn Through Reels</title>
     <link rel="stylesheet" href="styles-login-signup.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>  
 </head>
 <body>
     <div class="main">
@@ -31,14 +33,15 @@
 
             <div class="signup-form form">
                 <h2>Create Account</h2>
-                <input type="email" name="email" placeholder="Email Address" required>
-                <input type="password" name="password" placeholder="Create Password" required>
-                <input type="password" name="confirm-password" placeholder="Confirm Password" required>
-                <!-- <a href="main.html"><button class="btnn">Sign Up</button></a> -->
-                <button class="btnn" data-href="main.html">Sign Up</button>
+                <form id="signupForm">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="password" name="password" placeholder="Create Password" required>
+                    <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                    <button type="submit" class="btnn">Sign Up</button>
+                </form>
 
                 <p class="link">Already have an account?<br>
-                <a href="../../index.html">Log in here</a></p>
+                <a href="index.html">Log in here</a></p>
                 
                 <p class="liw">Or sign up with</p>
                 <div class="icons">
@@ -67,7 +70,6 @@
             </div>
         </div>
     </div>
-    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
     <script src="assets/js/login-signup.js"></script>
 </body>
 </html>

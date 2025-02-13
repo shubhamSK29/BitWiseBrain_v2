@@ -8,38 +8,125 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }, 100);
 
-    // Get the button and prevent its default link behavior
-    const submitBtn = document.querySelector('.btnn');
-    if (submitBtn) {
-        submitBtn.addEventListener('click', async function(e) {
+    // Handle form submissions
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    if (loginForm) {
+        loginForm.addEventListener('submit', async function(e) {
             e.preventDefault();
-            const form = document.querySelector('.form');
+            const submitBtn = this.querySelector('.btnn');
             
-            if (validateForm(form)) {
-                // Show loading state
-                this.disabled = true;
-                this.style.background = '#19b8e6';
-                this.textContent = 'Processing...';
-                
+            if (validateForm(this)) {
                 try {
-                    await simulateSubmission(); // Simulate API call
-                    showSuccess(form);
+                    submitBtn.disabled = true;
+                    submitBtn.style.background = '#19b8e6';
+                    submitBtn.textContent = 'Processing...';
                     
-                    // Get redirect path
-                    const redirectPath = form.classList.contains('signup-form') 
-                        ? 'main.html' 
-                        : 'assets/html/main.html';
-                    
-                    // Redirect after success animation
-                    setTimeout(() => {
-                        window.location.href = redirectPath;
-                    }, 1500);
-                    
+                    // Use current domain for API calls
+                    const apiUrl = `${window.location.origin}/api/auth`;
+                    console.log('Sending login request to:', apiUrl);
+
+                    const formData = {
+                        action: 'login',
+                        email: this.querySelector('input[name="email"]').value,
+                        password: this.querySelector('input[name="password"]').value
+                    };
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        localStorage.setItem('user', formData.email);
+                        showSuccess(this);
+                        
+                        setTimeout(() => {
+                            window.location.href = './assets/html/main.html';
+                        }, 1500);
+                    } else {
+                        throw new Error(data.error || 'Login failed');
+                    }
                 } catch (error) {
-                    showError(form, 'Something went wrong. Please try again.');
-                    this.disabled = false;
-                    this.style.background = '#1ec8ff';
-                    this.textContent = form.classList.contains('signup-form') ? 'Sign Up' : 'Log In';
+                    console.error('Login error:', error);
+                    showError(this, error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '#1ec8ff';
+                    submitBtn.textContent = 'Log In';
+                }
+            }
+        });
+    }
+
+    if (signupForm) {
+        signupForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('.btnn');
+            
+            if (validateForm(this)) {
+                try {
+                    // Show loading state
+                    submitBtn.disabled = true;
+                    submitBtn.style.background = '#19b8e6';
+                    submitBtn.textContent = 'Processing...';
+                    
+                    // Log the request details
+                    console.log('Sending signup request...');
+                    
+                    const formData = {
+                        action: 'register',
+                        email: this.querySelector('input[name="email"]').value,
+                        password: this.querySelector('input[name="password"]').value
+                    };
+
+                    // Use the current domain for the API endpoint
+                    const apiUrl = `${window.location.origin}/api/auth`;
+                    console.log('API URL:', apiUrl);
+
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(formData)
+                    });
+
+                    // Log the raw response
+                    const rawResponse = await response.text();
+                    console.log('Raw response:', rawResponse);
+
+                    // Try to parse the response as JSON
+                    let data;
+                    try {
+                        data = JSON.parse(rawResponse);
+                    } catch (parseError) {
+                        console.error('Failed to parse response as JSON:', parseError);
+                        throw new Error('Server returned invalid JSON');
+                    }
+
+                    if (response.ok) {
+                        // Store user session
+                        localStorage.setItem('user', formData.email);
+                        showSuccess(this);
+                        
+                        setTimeout(() => {
+                            window.location.href = './assets/html/main.html';
+                        }, 1500);
+                    } else {
+                        throw new Error(data.error || 'Registration failed');
+                    }
+                } catch (error) {
+                    console.error('Signup error:', error);
+                    showError(this, error.message);
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '#1ec8ff';
+                    submitBtn.textContent = 'Sign Up';
                 }
             }
         });

@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "api/auth.js", "use": "@vercel/node" },
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "*.css", "use": "@vercel/static" },
+    { "src": "assets/**/*", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { 
+      "src": "/api/auth",
+      "methods": ["POST", "OPTIONS"],
+      "dest": "/api/auth.js"
+    },
+    { "src": "/assets/(.*)", "dest": "/assets/$1" },
+    { "src": "/styles-login-signup.css", "dest": "/styles-login-signup.css" },
+    { "src": "/(.*)", "dest": "/$1" }
+  ],
+  "regions": ["iad1"]
+} 
