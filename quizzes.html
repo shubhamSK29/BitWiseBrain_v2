@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitWiseBrain - Quizzes</title>
+    <link rel="stylesheet" href="styles-login-signup.css">
+    <link rel="stylesheet" href="quizzes.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>  
+</head>
+<body>
+    <div class="left-navbar">
+        <div class="navbar-header">
+            <ion-icon name="menu-outline" class="hamburger"></ion-icon>
+            <span class="navbar-brand">BitWiseBrain</span>
+        </div>
+        
+        <div class="nav-items">
+            <a href="./index.html" class="nav-item">
+                <ion-icon name="home-outline"></ion-icon>
+                <span class="nav-text">Home</span>
+            </a>
+            
+            <a href="./reels/reel_html.html" class="nav-item">
+                <ion-icon name="play-circle-outline"></ion-icon>
+                <span class="nav-text">Reels</span>
+            </a>
+            
+            <a href="./courses.html" class="nav-item">
+                <ion-icon name="book-outline"></ion-icon>
+                <span class="nav-text">Courses</span>
+            </a>
+            
+            <a href="./quizzes.html" class="nav-item active">
+                <ion-icon name="help-circle-outline"></ion-icon>
+                <span class="nav-text">Quizzes</span>
+            </a>
+            
+            <a href="./playground/playground.html" class="nav-item">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <span class="nav-text">Playground</span>
+            </a>
+        </div>
+
+        <div class="login-container">
+            <a href="#" class="login-item">
+                <div class="login-circle">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <span class="nav-text">Login</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="courses-container">
+            <h1>Programming Quizzes</h1>
+            
+            <div class="course-grid">
+                <!-- Example quiz card -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <ion-icon name="logo-html5"></ion-icon>
+                        <h2>HTML & CSS</h2>
+                    </div>
+                    <div class="level-container">
+                        <div class="level">
+                            <h3>Beginner Quiz</h3>
+                            <ul class="topics">
+                                <li>Basic HTML Tags</li>
+                                <li>CSS Selectors</li>
+                                <li>Box Model</li>
+                            </ul>
+                            <button class="start-quiz">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Example quiz card -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <ion-icon name="logo-javascript"></ion-icon>
+                        <h2>JavaScript</h2>
+                    </div>
+                    <div class="level-container">
+                        <div class="level">
+                            <h3>Intermediate Quiz</h3>
+                            <ul class="topics">
+                                <li>Functions & Scope</li>
+                                <li>DOM Manipulation</li>
+                                <li>Async JavaScript</li>
+                            </ul>
+                            <button class="start-quiz">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Example quiz card -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <ion-icon name="logo-python"></ion-icon>
+                        <h2>Python</h2>
+                    </div>
+                    <div class="level-container">
+                        <div class="level">
+                            <h3>Advanced Quiz</h3>
+                            <ul class="topics">
+                                <li>Data Structures</li>
+                                <li>Object-Oriented Programming</li>
+                                <li>File Handling</li>
+                            </ul>
+                            <button class="start-quiz">Start Quiz</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add JavaScript functionality here
+        document.querySelector('.hamburger').addEventListener('click', function() {
+            document.querySelector('.left-navbar').classList.toggle('collapsed');
+            document.querySelector('.content-wrapper').classList.toggle('expanded');
+        });
+    </script>
+</body>
+</html>

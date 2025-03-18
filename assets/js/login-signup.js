@@ -168,6 +168,30 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    const navbar = document.querySelector('.left-navbar');
+    const hamburger = document.querySelector('.hamburger');
+    
+    // Toggle navbar expansion
+    hamburger.addEventListener('click', function() {
+        navbar.classList.toggle('expanded');
+        
+        // Change hamburger icon
+        const icon = this.querySelector('ion-icon');
+        if (navbar.classList.contains('expanded')) {
+            icon.setAttribute('name', 'close-outline');
+        } else {
+            icon.setAttribute('name', 'menu-outline');
+        }
+    });
+    
+    // Close navbar when clicking outside
+    document.addEventListener('click', function(e) {
+        if (!navbar.contains(e.target) && navbar.classList.contains('expanded')) {
+            navbar.classList.remove('expanded');
+            hamburger.querySelector('ion-icon').setAttribute('name', 'menu-outline');
+        }
+    });
 });
 
 function validateForm(form) {

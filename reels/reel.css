@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Caveat:wght@400;700&family=Lobster&family=Monoton&family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Playfair+Display+SC:ital,wght@0,400;0,700;1,700&family=Playfair+Display:ital,wght@0,400;0,700;1,700&family=Roboto:ital,wght@0,400;0,700;1,400;1,700&family=Source+Sans+Pro:ital,wght@0,400;0,700;1,700&family=Work+Sans:ital,wght@0,400;0,700;1,700&display=swap');
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url("../assets/img/quiz-BG.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* Content Wrapper */
+.content-wrapper {
+    position: fixed;
+    padding-left: var(--navbar-collapsed-width);
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Reel Container */
+.reels-container {
+    width: 300px;
+    height: 85vh;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    border-radius: 15px;
+    padding: 10px;
+}
+
+/* Hide Scrollbar */
+.reels-container::-webkit-scrollbar {
+    display: none;
+}
+
+.reels-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Individual Reel */
+.reel {
+    width: 100%;
+    height: calc(88vh - 20px);
+    aspect-ratio: 9/16;
+    scroll-snap-align: start;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Video Styling */
+.reel video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 18px;
+    background: black;
+}
+
+/* Delete Button */
+.delete-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    color: rgba(200, 200, 200, 0.4);
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    z-index: 10;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0;
+}
+
+.delete-button:hover {
+    color: rgba(200, 200, 200, 0.9);
+}
+
+/* Floating Plus Button */
+.add-button-container {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.add-button {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #fff;
+    color: black;
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.3);
+    transition: 0.3s;
+}
+
+.add-button:hover {
+    background: #ddd;
+}
+
+.play-control {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    transform: none;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    padding: 0;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.fullscreen-button {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    padding: 8px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.volume-control {
+    position: absolute;
+    bottom: 10px;
+    left: 60px;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    cursor: pointer;
+    padding: 8px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+/* Fullscreen styles */
+.reel:-webkit-full-screen {
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    background: black;
+}
+
+.reel:-webkit-full-screen video {
+    width: auto;
+    height: 100vh;
+    max-width: 100vw;
+    object-fit: contain;
+}
+
+.reel:fullscreen {
+    border: 3px solid rgba(255, 255, 255, 0.15);
+    background: black;
+}
+
+.reel:fullscreen video {
+    width: auto;
+    height: 100vh;
+    max-width: 100vw;
+    object-fit: contain;
+}
+
+/* For other browsers */
+.reel:-ms-fullscreen video,
+.reel:-moz-full-screen video {
+    width: auto;
+    height: 100vh;
+    max-width: 100vw;
+    object-fit: contain;
+}
+
+/* Volume Bar Styles */
+.volume-bar-container {
+    position: absolute;
+    bottom: 10px;
+    left: 110px;
+    width: 80px;
+    background: none;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.volume-bar-container.visible {
+    opacity: 1;
+}
+
+.volume-icon {
+    color: white;
+    font-size: 20px;
+}
+
+.volume-level {
+    color: white;
+    min-width: 40px;
+}
+
+.volume-bar {
+    width: 100px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.volume-bar-fill {
+    height: 100%;
+    background: white;
+    transition: width 0.1s;
+}
+
+/* Add these styles */
+.seek-bar-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    z-index: 20;
+}
+
+.seek-bar-fill {
+    height: 100%;
+    background: white;
+    width: 0%;
+    transition: width 0.1s linear;
+}
+
+/* Show a slightly thicker bar on hover */
+.seek-bar-container:hover {
+    height: 5px;
+}

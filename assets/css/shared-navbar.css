@@ -1,0 +1,166 @@
+:root {
+    --primary-color: #1ec8ff;
+    --dark-color: #1a1a1a;
+    --light-color: #f0f0f0;
+    --navbar-width: 250px;
+    --navbar-collapsed-width: 80px;
+}
+
+/* Left Navbar */
+.left-navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: var(--navbar-collapsed-width);
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(30, 200, 255, 0.1);
+    transition: width 0.3s ease;
+    z-index: 1000;
+    box-shadow: 4px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.left-navbar:hover {
+    width: var(--navbar-width);
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(30, 200, 255, 0.1);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.hamburger {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    margin-right: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    background: rgba(30, 200, 255, 0.1);
+}
+
+.hamburger:hover {
+    background: rgba(30, 200, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.navbar-brand {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.left-navbar:hover .navbar-brand {
+    opacity: 1;
+}
+
+.nav-items {
+    padding: 1rem 0;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1.5rem;
+    color: var(--light-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+}
+
+.nav-item:hover {
+    background: rgba(30, 200, 255, 0.1);
+}
+
+.nav-item.active {
+    background: rgba(30, 200, 255, 0.15);
+    border-right: 3px solid var(--primary-color);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 3px;
+    background: var(--primary-color);
+    box-shadow: 0 0 10px rgba(30, 200, 255, 0.5);
+}
+
+.nav-item ion-icon {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    color: var(--primary-color);
+    min-width: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 0 0 10px rgba(30, 200, 255, 0.3);
+}
+
+.nav-text {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    font-size: 1rem;
+    letter-spacing: 0.5px;
+}
+
+.left-navbar:hover .nav-text {
+    opacity: 1;
+}
+
+.login-container {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1rem;
+    border-top: 1px solid rgba(30, 200, 255, 0.1);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.login-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem;
+    color: var(--light-color);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.login-circle {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: rgba(30, 200, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 1rem;
+    min-width: 35px;
+    transition: all 0.3s ease;
+}
+
+.login-item:hover .login-circle {
+    background: rgba(30, 200, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.login-circle ion-icon {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px rgba(30, 200, 255, 0.3);
+}

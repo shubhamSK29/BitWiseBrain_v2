@@ -1,0 +1,14 @@
+.container {
+  position: relative;
+  height: 140vh;
+  margin-top: 50px;
+}
+
+.draggable-barrier {
+  cursor: move; /* Shows move cursor on hover */
+  user-select: none; /* Prevents text selection while dragging */
+  position: absolute; /* Ensure absolute positioning */
+  width: 10px; /* Add width if not already specified */
+  height: 100%; /* Make barrier full height */
+  background-color: #333; /* Add visible color if not already specified */
+}
