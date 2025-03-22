@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description" content="Javascript Custom Quiz">
+    <meta name="keywords" content="Javascript, Quiz, Javascript Quiz">
+    <meta name="author" content="Kirill Kuznetsov">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="../css/app.css" />
+    <link rel="icon" href="../img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <div id="end" class="flex-center flex-column">
+            <h1>Quiz Complete!</h1>
+            
+            <div class="results-container">
+                <div class="result-item">
+                    <span class="result-label">Final Score</span>
+                    <span id="finalScore" class="result-value">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Correct Answers</span>
+                    <span id="correctCount" class="result-value">0</span>
+                </div>
+                <div class="result-item">
+                    <span class="result-label">Incorrect Answers</span>
+                    <span id="incorrectCount" class="result-value">0</span>
+                </div>
+            </div>
+
+            <form class="end-form-container">
+                <h2>Enter your name to save your score!</h2>
+                <input type="text" name="name" id="username" placeholder="Enter your name" />
+                <button class="btn" id="saveScoreBtn" type="submit" disabled>Save Score</button>
+            </form>
+
+            <div class="end-buttons">
+                <a class="btn" href="game.html">Play Again</a>
+                <a class="btn" href="highscores.html">High Scores</a>
+            </div>
+        </div>
+    </div>
+    <script src="../js/end.js"></script>
+</body>
+</html>

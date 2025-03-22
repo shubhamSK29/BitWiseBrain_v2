@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitWiseBrain - Leaderboard</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/leaderboard.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="left-navbar">
+        <div class="nav-header">
+            <div class="hamburger">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <img src="assets/img/logo.png" alt="BitWiseBrain Logo" class="logo">
+        </div>
+        <nav>
+            <a href="index.html" class="nav-link">
+                <ion-icon name="home-outline"></ion-icon>
+                <span>Home</span>
+            </a>
+            <a href="playground/playground.html" class="nav-link">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <span>Playground</span>
+            </a>
+            <a href="reels.html" class="nav-link">
+                <ion-icon name="film-outline"></ion-icon>
+                <span>Reels</span>
+            </a>
+            <a href="courses.html" class="nav-link">
+                <ion-icon name="library-outline"></ion-icon>
+                <span>Courses</span>
+            </a>
+            <a href="leaderboard.html" class="nav-link active">
+                <ion-icon name="trophy-outline"></ion-icon>
+                <span>Leaderboard</span>
+            </a>
+        </nav>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="leaderboard-container">
+            <div class="leaderboard-header">
+                <h1>Leaderboard</h1>
+                <div class="filter-container">
+                    <button class="filter-btn active" data-filter="all-time">All Time</button>
+                    <button class="filter-btn" data-filter="this-month">This Month</button>
+                    <button class="filter-btn" data-filter="this-week">This Week</button>
+                </div>
+            </div>
+
+            <div class="top-performers">
+                <div class="performer">
+                    <div class="position">2</div>
+                    <div class="avatar">
+                        <img src="assets/img/avatar2.jpg" alt="Second Place">
+                        <span class="medal silver">🥈</span>
+                    </div>
+                    <div class="name">Alex Chen</div>
+                    <div class="score">950 pts</div>
+                </div>
+
+                <div class="performer winner">
+                    <div class="position">1</div>
+                    <div class="avatar">
+                        <img src="assets/img/avatar1.jpg" alt="First Place">
+                        <span class="medal gold">🥇</span>
+                    </div>
+                    <div class="name">Sarah Johnson</div>
+                    <div class="score">1250 pts</div>
+                </div>
+
+                <div class="performer">
+                    <div class="position">3</div>
+                    <div class="avatar">
+                        <img src="assets/img/avatar3.jpg" alt="Third Place">
+                        <span class="medal bronze">🥉</span>
+                    </div>
+                    <div class="name">Mike Smith</div>
+                    <div class="score">820 pts</div>
+                </div>
+            </div>
+
+            <div class="leaderboard-table">
+                <div class="table-header">
+                    <div class="rank">Rank</div>
+                    <div class="player">Player</div>
+                    <div class="quiz-completed">Quizzes</div>
+                    <div class="accuracy">Accuracy</div>
+                    <div class="points">Points</div>
+                </div>
+
+                <!-- Table rows will be dynamically populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/leaderboard.js"></script>
+</body>
+</html>

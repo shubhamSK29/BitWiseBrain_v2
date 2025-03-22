@@ -1,0 +1,250 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Background styles from reels page */
+body {
+    background: linear-gradient(to top, rgba(0,0,0,0.5)50%, rgba(0,0,0,0.5)50%), url("./assets/img/quiz-BG.jpg");
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* Left Navbar styles */
+.left-navbar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 250px;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+}
+
+.navbar-header {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    margin-bottom: 30px;
+}
+
+.navbar-brand {
+    color: #1ec8ff;
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.hamburger {
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+}
+
+.nav-items {
+    padding: 0 10px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border-radius: 10px;
+    margin: 5px 0;
+}
+
+.nav-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+    background: rgba(30, 200, 255, 0.2);
+    color: #1ec8ff;
+}
+
+.nav-item ion-icon {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.nav-text {
+    font-size: 16px;
+}
+
+.login-container {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    padding: 0 10px;
+}
+
+.login-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease;
+    border-radius: 10px;
+}
+
+.login-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 10px;
+}
+
+.login-circle ion-icon {
+    font-size: 20px;
+}
+
+/* Content styles */
+.content-wrapper {
+    margin-left: 250px;
+    padding: 20px;
+    min-height: 100vh;
+    transition: margin-left 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+/* Quiz container styles */
+.courses-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.courses-container h1 {
+    color: #1ec8ff;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 20px rgba(30, 200, 255, 0.4);
+}
+
+.course-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.course-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid rgba(30, 200, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(30, 200, 255, 0.2);
+}
+
+.course-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.course-header ion-icon {
+    font-size: 2.5rem;
+    color: #1ec8ff;
+}
+
+.course-header h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.level {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.level h3 {
+    color: #1ec8ff;
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+.topics {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.topics li {
+    color: white;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+}
+
+.topics li::before {
+    content: "•";
+    color: #1ec8ff;
+    margin-right: 8px;
+}
+
+.start-quiz {
+    width: 100%;
+    padding: 12px;
+    background: rgba(30, 200, 255, 0.2);
+    border: 1px solid rgba(30, 200, 255, 0.3);
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+}
+
+.start-quiz:hover {
+    background: rgba(30, 200, 255, 0.3);
+    transform: translateY(-2px);
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .left-navbar {
+        transform: translateX(-250px);
+    }
+    
+    .left-navbar.collapsed {
+        transform: translateX(0);
+    }
+    
+    .content-wrapper {
+        margin-left: 0;
+    }
+    
+    .content-wrapper.expanded {
+        margin-left: 250px;
+    }
+    
+    .course-grid {
+        grid-template-columns: 1fr;
+    }
+}

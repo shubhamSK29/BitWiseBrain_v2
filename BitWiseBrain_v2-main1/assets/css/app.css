@@ -1,0 +1,285 @@
+/* GENERAL */
+
+:root {
+  /* background-color: #ecf5ff; */
+  background-image: url(../img/quiz-BG.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* background-size: 100%; */
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #ffd700;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+  color: white;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+  font-size: 4.2rem;
+  color: white;
+  margin-bottom: 3rem;
+}
+
+h1 > span {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+h2 {
+  font-size: 4.2rem;
+  margin-bottom: 4rem;
+  font-weight: 700;
+}
+
+h3 {
+  font-size: 2.8rem;
+  font-weight: 500;
+}
+
+/* UTILITIES */
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.container > * {
+  width: 100%;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-center {
+  justify-content: center;
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.hidden {
+  display: none;
+}
+
+/* BUTTONS */
+.btn {
+  font-size: 1.6rem;
+  padding: 1.2rem 2.4rem;
+  width: auto;
+  min-width: 20rem;
+  text-align: center;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: white;
+  background: linear-gradient(45deg, rgba(78, 84, 200, 0.8), rgba(143, 148, 251, 0.8));
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(78, 84, 200, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  cursor: pointer;
+  transform: scale(1.01);
+  box-shadow: 0 0 20px rgba(143, 148, 251, 0.3);
+  background: linear-gradient(45deg, 
+    rgba(88, 94, 210, 0.85), 
+    rgba(153, 158, 255, 0.85)
+  );
+}
+
+.btn[disabled] {
+  opacity: 0.7;
+  background: linear-gradient(45deg, rgba(78, 84, 200, 0.5), rgba(143, 148, 251, 0.5));
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: 0 0 15px rgba(78, 84, 200, 0.2);
+}
+
+/* FORMS */
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 20rem;
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  color: white;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  outline: none;
+  box-shadow: 0 0 20px rgba(143, 148, 251, 0.3);
+  border: 1px solid rgba(143, 148, 251, 0.5);
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+/* Score display styles */
+#finalScore {
+  font-size: 5rem;
+  color: white;
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.3);
+  margin-bottom: 2rem;
+}
+
+#correctScore, #incorrectScore {
+  font-size: 2rem;
+  color: white;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+/* Add glass effect to the end container */
+#end {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  padding: 3rem;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.15);
+  max-width: 500px;
+  width: 90%;
+}
+
+.results-container {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 1rem;
+    margin: 2rem 0;
+    min-width: 300px;
+}
+
+.result-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1rem 0;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.result-item:last-child {
+    border-bottom: none;
+}
+
+.result-label {
+    color: #aaa;
+    font-size: 1.1rem;
+}
+
+.result-value {
+    color: #1ec8ff;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.end-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+#end h1 {
+    color: #1ec8ff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+/* Update background styles for quizzes page */
+body {
+    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url("../img/quiz-BG.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+/* Add ambient glow effect for quizzes page */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, 
+            rgba(143, 148, 251, 0.15) 0%, 
+            transparent 60%),
+        radial-gradient(circle at 80% 80%, 
+            rgba(78, 84, 200, 0.15) 0%, 
+            transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.content-wrapper {
+    position: relative;
+    z-index: 2;
+    min-height: 120vh;
+    padding: 20px;
+}
+
+/* Add overlay for quizzes page */
+.content-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        45deg,
+        rgba(0, 0, 0, 0.7),
+        rgba(0, 0, 0, 0.4)
+    );
+    z-index: -1;
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitWiseBrain - Courses</title>
+    <link rel="stylesheet" href="styles-login-signup.css">
+    <link rel="stylesheet" href="courses.css">
+    <link rel="stylesheet" href="assets/css/shared-navbar.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <!-- Consistent Navbar -->
+    <div class="left-navbar">
+        <div class="navbar-header">
+            <ion-icon name="menu-outline" class="hamburger"></ion-icon>
+            <span class="navbar-brand">BitWiseBrain</span>
+        </div>
+        
+        <div class="nav-items">
+            <a href="./index.html" class="nav-item">
+                <ion-icon name="home-outline"></ion-icon>
+                <span class="nav-text">Home</span>
+            </a>
+            
+            <a href="./reels/reel_html.html" class="nav-item">
+                <ion-icon name="play-circle-outline"></ion-icon>
+                <span class="nav-text">Reels</span>
+            </a>
+            
+            <a href="./courses.html" class="nav-item active">
+                <ion-icon name="book-outline"></ion-icon>
+                <span class="nav-text">Courses</span>
+            </a>
+            
+            <a href="assets/html/quiz-setup.html" class="nav-item">
+                <ion-icon name="help-circle-outline"></ion-icon>
+                <span class="nav-text">Quizzes</span>
+            </a>
+            
+            <a href="./playground/playground.html" class="nav-item">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <span class="nav-text">Playground</span>
+            </a>
+
+            <a href="./leaderboard.html" class="nav-item">
+                <ion-icon name="trophy-outline"></ion-icon>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+        </div>
+
+        <div class="login-container">
+            <a href="#" class="login-item">
+                <div class="login-circle">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <span class="nav-text">Login</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Course Grid -->
+    <div class="content-wrapper">
+        <div class="course-grid">
+            <!-- HTML Course Card -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <ion-icon name="logo-html5"></ion-icon>
+                </div>
+                <h3>HTML</h3>
+                <p>Learn the fundamentals of web structure</p>
+                <div class="course-progress">
+                    <div class="progress-bar" style="width: 75%"></div>
+                </div>
+                <a href="./courses/html-course.html">
+                    <button class="start-btn">Topics</button>
+                </a>
+            </div>
+
+            <!-- CSS Course Card -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <ion-icon name="logo-css3"></ion-icon>
+                </div>
+                <h3>CSS</h3>
+                <p>Master web styling and design</p>
+                <div class="course-progress">
+                    <div class="progress-bar" style="width: 45%"></div>
+                </div>
+                <button class="start-btn">Continue Learning</button>
+            </div>
+
+            <!-- JavaScript Course Card -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <ion-icon name="logo-javascript"></ion-icon>
+                </div>
+                <h3>JavaScript</h3>
+                <p>Build interactive web applications</p>
+                <div class="course-progress">
+                    <div class="progress-bar" style="width: 30%"></div>
+                </div>
+                <button class="start-btn">Continue Learning</button>
+            </div>
+
+            <!-- Python Course Card -->
+            <div class="course-card">
+                <div class="course-icon">
+                    <ion-icon name="logo-python"></ion-icon>
+                </div>
+                <h3>Python</h3>
+                <p>Learn versatile programming</p>
+                <div class="course-progress">
+                    <div class="progress-bar" style="width: 15%"></div>
+                </div>
+                <button class="start-btn">Start Learning</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="courses.js"></script>
+</body>
+</html>

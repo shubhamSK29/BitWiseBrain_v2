@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join BitWiseBrain - Learn Through Reels</title>
+    <link rel="stylesheet" href="styles-login-signup.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>  
+</head>
+<body>
+    <div class="left-navbar">
+        <a href="#" class="nav-item">
+            <ion-icon name="home-outline"></ion-icon>
+            <span class="tooltip">Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <ion-icon name="book-outline"></ion-icon>
+            <span class="tooltip">Learn</span>
+        </a>
+        <a href="#" class="nav-item">
+            <ion-icon name="code-slash-outline"></ion-icon>
+            <span class="tooltip">Practice</span>
+        </a>
+        <a href="#" class="nav-item">
+            <ion-icon name="trophy-outline"></ion-icon>
+            <span class="tooltip">Leaderboard</span>
+        </a>
+        <a href="#" class="nav-item">
+            <ion-icon name="settings-outline"></ion-icon>
+            <span class="tooltip">Settings</span>
+        </a>
+    </div>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">BitWiseBrain</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </div>
+        </div> 
+
+        <div class="content">
+            <h1>Start Your<br>Learning <span>Journey</span><br>Today</h1>
+            <p class="par">Join our community of learners and master programming<br>
+                through engaging video reels and interactive quizzes.<br>
+                Learn at your own pace, anywhere, anytime.</p>
+
+            <div class="signup-form form">
+                <h2>Create Account</h2>
+                <form id="signupForm">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="password" name="password" placeholder="Create Password" required>
+                    <input type="password" name="confirm-password" placeholder="Confirm Password" required>
+                    <button type="submit" class="btnn">Sign Up</button>
+                </form>
+
+                <p class="link">Already have an account?<br>
+                <a href="index.html">Log in here</a></p>
+                
+                <p class="liw">Or sign up with</p>
+                <div class="icons">
+                    <a href="#"><ion-icon name="logo-google"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-github"></ion-icon></a>
+                    <a href="#"><ion-icon name="logo-linkedin"></ion-icon></a>
+                </div>
+            </div>
+
+            <!-- In signup.html, use this path instead -->
+            <div class="dev-access">
+                <button 
+                    onclick="window.location.href='main.html'" 
+                    style="
+                        position: fixed;
+                        bottom: 10px;
+                        left: 10px;
+                        background: transparent;
+                        border: none;
+                        color: transparent;
+                        cursor: pointer;
+                        padding: 10px;
+                        z-index: 1000;
+                    "
+                >Dev Access</button>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/login-signup.js"></script>
+</body>
+</html>
