@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitWiseBrain - Quiz Game</title>
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/game.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+</head>
+<body>
+    <div class="left-navbar">
+        <div class="navbar-header">
+            <ion-icon name="menu-outline" class="hamburger"></ion-icon>
+            <span class="navbar-brand">BitWiseBrain</span>
+        </div>
+        
+        <div class="nav-items">
+            <a href="../../index.html" class="nav-item">
+                <ion-icon name="home-outline"></ion-icon>
+                <span class="nav-text">Home</span>
+            </a>
+            
+            <a href="../../reels/reel_html.html" class="nav-item">
+                <ion-icon name="play-circle-outline"></ion-icon>
+                <span class="nav-text">Reels</span>
+            </a>
+            
+            <a href="../../courses.html" class="nav-item">
+                <ion-icon name="book-outline"></ion-icon>
+                <span class="nav-text">Courses</span>
+            </a>
+            
+            <a href="quiz-setup.html" class="nav-item active">
+                <ion-icon name="help-circle-outline"></ion-icon>
+                <span class="nav-text">Quizzes</span>
+            </a>
+            
+            <a href="../../playground/playground.html" class="nav-item">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <span class="nav-text">Playground</span>
+            </a>
+
+            <a href="../../leaderboard.html" class="nav-item">
+                <ion-icon name="trophy-outline"></ion-icon>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+        </div>
+
+        <div class="login-container">
+            <a href="#" class="login-item">
+                <div class="login-circle">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <span class="nav-text">Login</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="stats-container">
+        <div class="stats-content">
+            <div class="stats-item">
+                <span class="stats-label">Questions:</span>
+                <span class="stats-value" id="questions-answered">0</span>
+            </div>
+            <div class="stats-item">
+                <span class="stats-label">Accuracy:</span>
+                <span class="stats-value" id="accuracy">0%</span>
+            </div>
+            <div class="stats-item">
+                <span class="stats-label">Score:</span>
+                <span class="stats-value" id="score">0</span>
+            </div>
+            <button id="end-quiz" class="end-btn">
+                <ion-icon name="close-circle-outline"></ion-icon>
+                End Quiz
+            </button>
+        </div>
+    </div>
+
+    <main class="container">
+        <div id="game">
+            <div id="questions-container">
+                <!-- Questions will be dynamically inserted here -->
+            </div>
+        </div>
+    </main>
+
+    <!-- End Quiz Popup -->
+    <div id="end-quiz-popup" class="popup">
+        <div class="popup-content">
+            <h2>Quiz Results</h2>
+            <div class="result-stats">
+                <p>Questions Attempted: <span id="final-questions">0</span></p>
+                <p>Final Accuracy: <span id="final-accuracy">0%</span></p>
+                <p>Total Score: <span id="final-score">0</span></p>
+            </div>
+            <div class="popup-buttons">
+                <button id="try-again" class="try-again-btn">Try Again</button>
+            </div>
+        </div>
+    </div>
+
+    <template id="question-template">
+        <div class="question-slide">
+            <div id="boxed">
+                <div class="question-meta">
+                    <span class="category"></span>
+                    <span class="difficulty"></span>
+                </div>
+                <h2 class="question-text"></h2>
+                <div class="choices-container">
+                    <!-- Choices will be dynamically inserted -->
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+    <script type="module" src="../js/game.js"></script>
+</body>
+</html>

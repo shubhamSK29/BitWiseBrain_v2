@@ -1,0 +1,267 @@
+/* Content Wrapper */
+body {
+    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url("../img/quiz-BG.jpg");
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Add ambient glow effect */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 20%, 
+            rgba(143, 148, 251, 0.15) 0%, 
+            transparent 60%),
+        radial-gradient(circle at 80% 80%, 
+            rgba(78, 84, 200, 0.15) 0%, 
+            transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.content-wrapper {
+    position: fixed;
+    padding-left: var(--navbar-collapsed-width);
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    z-index: 1;
+}
+
+/* Courses Container */
+.courses-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Course Card */
+.course-card {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 2rem;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.course-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.course-icon ion-icon {
+    width: 100%;
+    height: 100%;
+    color: #1ec8ff;
+}
+
+/* Course specific icon colors */
+.course-card:nth-child(1) .course-icon ion-icon {
+    color: #e44d26; /* HTML orange */
+}
+
+.course-card:nth-child(2) .course-icon ion-icon {
+    color: #264de4; /* CSS blue */
+}
+
+.course-card:nth-child(3) .course-icon ion-icon {
+    color: #f7df1e; /* JavaScript yellow */
+}
+
+.course-card:nth-child(4) .course-icon ion-icon {
+    color: #3776ab; /* Python blue */
+}
+
+.course-card h2 {
+    color: #1ec8ff;
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.course-card p {
+    color: #ffffff;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+}
+
+/* Progress Bar */
+.progress-bar {
+    background: rgba(255, 255, 255, 0.1);
+    height: 6px;
+    border-radius: 3px;
+    margin-bottom: 1.5rem;
+    overflow: hidden;
+}
+
+.progress {
+    background: #1ec8ff;
+    height: 100%;
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Start Quiz Button */
+.start-quiz-btn {
+    background: #1ec8ff;
+    color: #000;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.start-quiz-btn:hover {
+    background: #00a0ff;
+    transform: scale(1.05);
+}
+
+/* Topics Modal */
+.topics-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    position: relative;
+    background: rgba(30, 30, 30, 0.95);
+    width: 90%;
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 2rem;
+    border-radius: 15px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.close-modal {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-modal:hover {
+    color: #1ec8ff;
+}
+
+#modalTitle {
+    color: #1ec8ff;
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.topics-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.topic-item {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+    color: #fff;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.topic-item:hover {
+    background: rgba(30, 200, 255, 0.1);
+    transform: translateX(5px);
+}
+
+.topic-item.completed {
+    border-left: 3px solid #1ec8ff;
+}
+
+.more-details-btn {
+    display: block;
+    width: 200px;
+    margin: 2rem auto 0;
+    padding: 1rem 2rem;
+    background: #1ec8ff;
+    color: #000;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.more-details-btn:hover {
+    background: #00a0ff;
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .courses-container {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 20px auto;
+        padding: 1.5rem;
+    }
+
+    .topics-list {
+        grid-template-columns: 1fr;
+    }
+} 

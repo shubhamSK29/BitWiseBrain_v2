@@ -1,0 +1,289 @@
+/* Content Wrapper */
+.content-wrapper {
+    position: fixed;
+    padding-left: var(--navbar-collapsed-width);
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    background: linear-gradient(to top, rgba(0,0,0,0.3)50%, rgba(0,0,0,0.3)50%), url("../img/quiz-BG.jpg");
+    background-position: center;
+    background-size: cover;
+}
+
+.leaderboard-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+/* Header Section */
+.leaderboard-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(30, 200, 255, 0.2);
+}
+
+.leaderboard-header h1 {
+    color: #1ec8ff;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Filter Buttons */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.filter-btn {
+    background: rgba(30, 200, 255, 0.1);
+    border: 1px solid rgba(30, 200, 255, 0.2);
+    color: #fff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    font-size: 0.9rem;
+}
+
+.filter-btn:hover {
+    background: rgba(30, 200, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: rgba(30, 200, 255, 0.3);
+    border-color: rgba(30, 200, 255, 0.5);
+    box-shadow: 0 4px 12px rgba(30, 200, 255, 0.2);
+}
+
+/* Top Performers Section */
+.top-performers {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    gap: 2rem;
+    margin: 4rem 0;
+    padding: 2rem;
+    position: relative;
+}
+
+.performer {
+    text-align: center;
+    color: #fff;
+    transition: transform 0.3s ease;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid rgba(30, 200, 255, 0.2);
+    width: 200px;
+}
+
+.winner {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid rgba(30, 200, 255, 0.4);
+}
+
+.performer:hover {
+    transform: translateY(-10px);
+}
+
+.winner:hover {
+    transform: translateY(-10px) scale(1.1);
+}
+
+.performer .position {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    color: #1ec8ff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.performer .avatar {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 1rem;
+}
+
+.winner .avatar {
+    width: 120px;
+    height: 120px;
+}
+
+.performer .avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid rgba(30, 200, 255, 0.3);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.performer .medal {
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    font-size: 2.5rem;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+.medal.gold { color: #FFD700; }
+.medal.silver { color: #C0C0C0; }
+.medal.bronze { color: #CD7F32; }
+
+.performer .name {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    color: #1ec8ff;
+}
+
+.performer .score {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    background: rgba(30, 200, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 0.5rem;
+}
+
+/* Leaderboard Table */
+.leaderboard-table {
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(30, 200, 255, 0.2);
+}
+
+.table-header {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    padding: 1.2rem;
+    background: rgba(30, 200, 255, 0.1);
+    color: #1ec8ff;
+    font-weight: bold;
+    border-bottom: 1px solid rgba(30, 200, 255, 0.2);
+}
+
+.table-row {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+    padding: 1.2rem;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.table-row:hover {
+    background: rgba(30, 200, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.table-row:last-child {
+    border-bottom: none;
+}
+
+.player {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.player img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(30, 200, 255, 0.3);
+}
+
+.rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #1ec8ff;
+}
+
+.quiz-completed, .accuracy, .points {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.accuracy {
+    color: #1ec8ff;
+}
+
+.points {
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table-row {
+    animation: fadeIn 0.5s ease forwards;
+    opacity: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .top-performers {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+
+    .performer {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .winner {
+        transform: scale(1.05);
+    }
+
+    .table-header, .table-row {
+        grid-template-columns: 0.5fr 2fr 1fr 1fr;
+    }
+
+    .quiz-completed {
+        display: none;
+    }
+
+    .leaderboard-container {
+        padding: 1rem;
+    }
+
+    .filter-container {
+        flex-wrap: wrap;
+    }
+
+    .filter-btn {
+        width: calc(50% - 0.5rem);
+    }
+}

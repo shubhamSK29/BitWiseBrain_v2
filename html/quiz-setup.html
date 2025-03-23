@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BitWise Brain - Quiz Setup</title>
+    <link rel="stylesheet" href="../css/quiz-setup.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.4.0/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+<body>
+    <div class="left-navbar">
+        <div class="navbar-header">
+            <ion-icon name="menu-outline" class="hamburger"></ion-icon>
+            <span class="navbar-brand">BitWiseBrain</span>
+        </div>
+        
+        <div class="nav-items">
+            <a href="../../index.html" class="nav-item">
+                <ion-icon name="home-outline"></ion-icon>
+                <span class="nav-text">Home</span>
+            </a>
+            
+            <a href="../../reels/reel_html.html" class="nav-item">
+                <ion-icon name="play-circle-outline"></ion-icon>
+                <span class="nav-text">Reels</span>
+            </a>
+            
+            <a href="../../courses.html" class="nav-item">
+                <ion-icon name="book-outline"></ion-icon>
+                <span class="nav-text">Courses</span>
+            </a>
+            
+            <a href="quiz-setup.html" class="nav-item active">
+                <ion-icon name="help-circle-outline"></ion-icon>
+                <span class="nav-text">Quizzes</span>
+            </a>
+            
+            <a href="../../playground/playground.html" class="nav-item">
+                <ion-icon name="code-slash-outline"></ion-icon>
+                <span class="nav-text">Playground</span>
+            </a>
+
+            <a href="../../leaderboard.html" class="nav-item">
+                <ion-icon name="trophy-outline"></ion-icon>
+                <span class="nav-text">Leaderboard</span>
+            </a>
+        </div>
+
+        <div class="login-container">
+            <a href="#" class="login-item">
+                <div class="login-circle">
+                    <ion-icon name="person-outline"></ion-icon>
+                </div>
+                <span class="nav-text">Login</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="quiz-setup-container">
+            <div class="score-container">
+                <div class="score-item">
+                    <span class="score-label">Questions:</span>
+                    <span class="score-value">0</span>
+                </div>
+                <div class="score-item">
+                    <span class="score-label">Accuracy:</span>
+                    <span class="score-value">0%</span>
+                </div>
+            </div>
+            <h1>Quiz Setup</h1>
+            <div class="setup-form">
+                <div class="form-group">
+                    <label>Programming Language</label>
+                    <select id="language" required>
+                        <option value="">Choose language</option>
+                        <option value="html">HTML</option>
+                        <option value="css">CSS</option>
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="java">Java</option>
+                        <option value="c">C Programming</option>
+                        <option value="cpp">C++</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Difficulty Level</label>
+                    <select id="difficulty" required>
+                        <option value="">Select level</option>
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Number of Questions</label>
+                    <div class="question-count-grid">
+                        <button class="count-btn" data-count="10">10</button>
+                        <button class="count-btn" data-count="15">15</button>
+                        <button class="count-btn" data-count="20">20</button>
+                        <button class="count-btn" data-count="25">25</button>
+                    </div>
+                </div>
+
+                <button id="start-quiz" class="start-btn" disabled>Start Quiz</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/quiz-setup.js"></script>
+</body>
+</html>
